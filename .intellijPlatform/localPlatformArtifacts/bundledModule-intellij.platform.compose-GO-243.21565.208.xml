@@ -1,0 +1,13 @@
+<ivy-module version="2.0">
+  <info organisation="bundledModule" module="intellij.platform.compose" revision="GO-243.21565.208"/>
+  <configurations>
+    <conf name="default" visibility="public"/>
+  </configurations>
+  <publications>
+    <artifact name="intellij.platform.compose" ext="jar" conf="default" url="lib/modules"/>
+  </publications>
+  <dependencies>
+    <dependency org="bundledModule" name="intellij.libraries.compose.desktop" rev="GO-243.21565.208"/>
+    <dependency org="bundledModule" name="intellij.libraries.skiko" rev="GO-243.21565.208"/>
+  </dependencies>
+</ivy-module>

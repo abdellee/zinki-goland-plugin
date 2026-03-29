@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <!-- Lightning bolt Z shape, works on light and dark backgrounds -->
+  <path d="M5 2 L11 2 L7 7.5 L11 7.5 L5 14 L8 8.5 L4 8.5 Z"
+        fill="#7c3aed" stroke="none"/>
+</svg>
