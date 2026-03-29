@@ -3,6 +3,9 @@
 build/
 *.class
 
+# IntelliJ Platform plugin cache
+.intellijPlatform/
+
 # IntelliJ IDEA
 .idea/
 *.iml
