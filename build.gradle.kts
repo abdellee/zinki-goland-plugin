@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.zinki"
-version = "1.1.0"
+version = "0.1.0-beta"
 
 repositories {
     mavenCentral()
@@ -22,8 +22,8 @@ dependencies {
 
 intellijPlatform {
     pluginConfiguration {
-        name = "Zinki for Claude"
-        version = "1.1.0"
+        name = "Zinki for Claude AI"
+        version = "0.1.0-beta"
         ideaVersion {
             sinceBuild = "243"
         }

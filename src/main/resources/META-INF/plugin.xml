@@ -1,54 +1,63 @@
 <idea-plugin>
     <id>com.zinki.plugin</id>
-    <name>Zinki for Claude</name>
-    <version>1.1.0</version>
+    <name>Zinki for Claude AI</name>
+    <version>0.1.0-beta</version>
     <vendor url="https://github.com/zinki-ai" email="zinki@example.com">Zinki</vendor>
 
     <description><![CDATA[
-<h2>Zinki for Claude — AI Code Skills for Go Developers</h2>
-<p>Run Claude Code AI skills on selected Go code directly from GoLand's built-in terminal. Seven skills, zero context switching.</p>
+<h2>Zinki for Claude AI — AI Code Skills for Go Developers</h2>
+<p><b>Beta release.</b> Run Claude Code AI skills on selected Go code directly from GoLand's built-in terminal. Zero context switching.</p>
 
-<h3>Skills</h3>
+<h3>🚀 Getting Started</h3>
+<ol>
+  <li><b>Install Claude Code CLI</b><br/>
+      Open a terminal and run:<br/>
+      <code>npm install -g @anthropic-ai/claude-code</code></li>
+  <li><b>Authenticate</b><br/>
+      Run <code>claude</code> in a terminal and follow the login prompt (one-time setup).</li>
+  <li><b>Make sure Go is on your PATH</b><br/>
+      Run <code>go version</code> to confirm.</li>
+  <li><b>Select code in the editor</b><br/>
+      Highlight any Go code snippet.</li>
+  <li><b>Right-click → Zinki for Claude AI</b><br/>
+      Choose a skill, set options in the dialog, and Claude streams output directly in the built-in terminal.</li>
+  <li><b>Save results (optional)</b><br/>
+      At the end of each skill, Claude will ask if you want to save the output as a Markdown file.</li>
+</ol>
+
+<h3>✨ Skills (Beta)</h3>
 <ul>
-  <li><b>Explain Code</b> (Ctrl+Alt+E) — Step-by-step with ASCII diagrams, analogies, gotchas</li>
-  <li><b>Review Code</b> (Ctrl+Alt+R) — Security, performance, concurrency, readability</li>
-  <li><b>Simplify Code</b> (Ctrl+Alt+S) — Go idioms, runs unit tests to verify</li>
-  <li><b>Write Docs</b> (Ctrl+Alt+D) — godoc comments, markdown docs, or docstrings</li>
-  <li><b>Generate Tests</b> (Ctrl+Alt+T) — Table-driven Go tests with edge cases</li>
-  <li><b>Fix Bug</b> (Ctrl+Alt+B) — Diagnose, fix, and verify with go test</li>
-  <li><b>Refactor</b> (Ctrl+Alt+F) — Idiomatic Go restructuring</li>
+  <li><b>Explain Code</b> <kbd>Ctrl+Alt+E</kbd> — Step-by-step explanation with ASCII diagrams, analogies, gotchas, and debugging tips</li>
+  <li><b>Review Code</b> <kbd>Ctrl+Alt+R</kbd> — Deep review covering security, performance, concurrency, and readability</li>
+  <li><b>Simplify Code</b> <kbd>Ctrl+Alt+S</kbd> — Rewrite to idiomatic Go; runs unit tests to verify behavior</li>
 </ul>
 
-<h3>Prerequisites</h3>
+<h3>⚙️ Prerequisites</h3>
 <ul>
   <li>Claude Code CLI: <code>npm install -g @anthropic-ai/claude-code</code></li>
-  <li>Authenticate once: run <code>claude</code> in a terminal and log in</li>
+  <li>Authenticated Claude session (run <code>claude</code> once to log in)</li>
   <li>Go installed and on PATH</li>
-  <li>PowerShell available (Windows) or bash (macOS/Linux)</li>
+  <li>PowerShell (Windows) or bash (macOS/Linux)</li>
 </ul>
 
-<h3>Usage</h3>
-<ol>
-  <li>Select Go code in the editor</li>
-  <li>Right-click → <b>Zinki for Claude</b> → choose a skill</li>
-  <li>Set options in the dialog</li>
-  <li>Claude runs in the built-in terminal — output streams directly</li>
-  <li>Click <b>Save as MD</b> in the notification to save output as Markdown</li>
-</ol>
+<h3>💡 Tips</h3>
+<ul>
+  <li>The first run opens a dedicated <b>Zinki for Claude AI</b> terminal tab — subsequent runs reuse it</li>
+  <li>Each skill adapts to your options — try different depth/focus combinations</li>
+  <li>Type <code>1</code> when Claude asks to save output as a Markdown file next to your source file</li>
+</ul>
+
+<p><i>More skills (Write Docs, Generate Tests, Fix Bug, Refactor) coming in v1.0.</i></p>
     ]]></description>
 
     <change-notes><![CDATA[
-<b>1.1.0</b>
+<b>0.1.0-beta</b>
 <ul>
-  <li>Added: Write Docs, Generate Tests, Fix Bug, Refactor skills</li>
-  <li>Added: Keyboard shortcuts (Ctrl+Alt+E/R/S/D/T/B/F)</li>
-  <li>Added: Plugin icon in context menu and install dialog</li>
-  <li>Added: Save output as Markdown notification</li>
-  <li>Added: Auto-include file name and package context in prompts</li>
-</ul>
-<b>1.0.0</b>
-<ul>
-  <li>Initial release: Explain, Review, Simplify Code</li>
+  <li>Beta release: Explain Code, Review Code, Simplify Code</li>
+  <li>Keyboard shortcuts: Ctrl+Alt+E / Ctrl+Alt+R / Ctrl+Alt+S</li>
+  <li>Terminal reuse — single "Zinki for Claude AI" tab across all invocations</li>
+  <li>File and package context auto-included in every prompt</li>
+  <li>Save output as Markdown via in-terminal prompt</li>
 </ul>
     ]]></change-notes>
 
@@ -61,13 +70,13 @@
     </extensions>
 
     <actions>
-        <group id="ZinkiMenu" text="Zinki for Claude" popup="true" icon="/icons/zinki.svg">
+        <group id="ZinkiMenu" text="Zinki for Claude AI" popup="true" icon="/icons/zinki.svg">
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
 
             <action id="ZinkiExplainCode"
                     class="com.zinki.plugin.ExplainCodeAction"
                     text="Explain Code"
-                    description="Explain selected Go code using Claude"
+                    description="Explain selected Go code using Claude AI"
                     icon="/icons/zinki.svg">
                 <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt E"/>
             </action>
@@ -75,7 +84,7 @@
             <action id="ZinkiReviewCode"
                     class="com.zinki.plugin.ReviewCodeAction"
                     text="Review Code"
-                    description="Review selected Go code using Claude"
+                    description="Review selected Go code using Claude AI"
                     icon="/icons/zinki.svg">
                 <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt R"/>
             </action>
@@ -83,41 +92,9 @@
             <action id="ZinkiSimplifyCode"
                     class="com.zinki.plugin.SimplifyCodeAction"
                     text="Simplify Code"
-                    description="Simplify selected Go code using Claude"
+                    description="Simplify selected Go code using Claude AI"
                     icon="/icons/zinki.svg">
                 <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt S"/>
-            </action>
-
-            <action id="ZinkiWriteDocs"
-                    class="com.zinki.plugin.WriteDocsAction"
-                    text="Write Docs"
-                    description="Generate documentation for selected Go code using Claude"
-                    icon="/icons/zinki.svg">
-                <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt D"/>
-            </action>
-
-            <action id="ZinkiGenerateTests"
-                    class="com.zinki.plugin.GenerateTestsAction"
-                    text="Generate Tests"
-                    description="Generate Go tests for selected code using Claude"
-                    icon="/icons/zinki.svg">
-                <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt T"/>
-            </action>
-
-            <action id="ZinkiFixBug"
-                    class="com.zinki.plugin.FixBugAction"
-                    text="Fix Bug"
-                    description="Diagnose and fix a bug in selected Go code using Claude"
-                    icon="/icons/zinki.svg">
-                <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt B"/>
-            </action>
-
-            <action id="ZinkiRefactor"
-                    class="com.zinki.plugin.RefactorAction"
-                    text="Refactor"
-                    description="Refactor selected Go code using Claude"
-                    icon="/icons/zinki.svg">
-                <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt F"/>
             </action>
         </group>
     </actions>
