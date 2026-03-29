@@ -13,6 +13,9 @@ build/
 *.ipr
 out/
 
+# Claude Code local settings (may contain user paths and PII)
+.claude/
+
 # OS
 .DS_Store
 Thumbs.db
